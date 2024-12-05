@@ -16,6 +16,7 @@ public class VerificadorHorario extends Autorizador{
 			}
 		} else {
 			System.out.println("Erro: Transacao fora do horario permitido.");
+			transacao.setAprovada(false);
 		}
 	}
 }

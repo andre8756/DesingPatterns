@@ -9,6 +9,7 @@ public class VerificadorSaldo extends Autorizador{
 			if(proximo != null)proximo.autorizar(transacao);
 		} else {
 			System.out.println("Erro: Saldo insuficiente.");
+			transacao.setAprovada(false);
 		}
 	}
 }

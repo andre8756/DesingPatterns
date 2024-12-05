@@ -9,6 +9,7 @@ public class VerificadorLimiteTransacional extends Autorizador{
 			if(proximo!=null)proximo.autorizar(transacao);
 		}else {
 			System.out.println("Erro: Limite transacional ultrapassado.");
+			transacao.setAprovada(false);
 		}
 	}
 }

@@ -2,16 +2,15 @@ package Memento;
 
 import java.util.ArrayList;
 
+
+
 public class ListaTransacoes {
 	public ArrayList<TransacaoEditor.Memento> savedStates = new ArrayList<>();
 	
 	// Adiciona um novo memento � lista
     public void addMemento(TransacaoEditor.Memento memento) {
-    	if (savedStates.size() > 4) {
-    		savedStates.remove(0);
+    	if (memento.getState().isAprovada()) {
         	savedStates.add(memento);
-    	}else {
-    		savedStates.add(memento);
     	}
     }
 
@@ -22,12 +21,19 @@ public class ListaTransacoes {
         }
         return null;
     }
+    
+    public TransacaoEditor.Memento getTransacao(int indice) {
+    	TransacaoEditor.Memento transacaoAdd = savedStates.get(indice);
+    	return transacaoAdd;
+    }
 
 	@Override
 	public String toString() {
 		String informacao = "";
+		int i = 1;
 		for(TransacaoEditor.Memento memento : savedStates) {
-			informacao = informacao+memento.toString()+"\n";
+			informacao = informacao+i+" - "+memento.toString()+"\n";
+			i++;
 		}
 		return informacao;
 	}

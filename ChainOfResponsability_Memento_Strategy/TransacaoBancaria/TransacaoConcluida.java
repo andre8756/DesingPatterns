@@ -1,9 +1,13 @@
 package TransacaoBancaria;
 import Strategy.*;
+import Memento.*;
 
 public class TransacaoConcluida {
 	private Transacao transacao = new Transacao();
 	private MetodoPagamento metodoPagamento;
+	//Criando Memento e armazenando as informa��es
+	TransacaoEditor editor = new TransacaoEditor();
+	ListaTransacoes careTaker = new ListaTransacoes();
 	
 	public void RealizarPagamento(Double valor) {
 		metodoPagamento.processarPagamento(valor);
@@ -21,7 +25,13 @@ public class TransacaoConcluida {
 		transacao.getValor();
 		setMetodoPagamento(transacao.getTipo());
 		RealizarPagamento(transacao.getValor());
-		
+		editor.setTransacao(transacao);
+		careTaker.addMemento(editor.saveToMemento());
+		transacao.setAprovada(true);
+	}
+	
+	public ListaTransacoes getTransacoes() {
+		return careTaker;
 	}
 	
 	//Getters e Setters

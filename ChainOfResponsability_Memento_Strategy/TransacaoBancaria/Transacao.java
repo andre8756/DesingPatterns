@@ -11,6 +11,23 @@ public class Transacao {
 	private LocalTime HorarioLimiteIncio = LocalTime.of(6, 0);
 	private LocalTime horarioLimiteFim = LocalTime.of(18, 0);
 	private MetodoPagamento tipo;	
+	private boolean aprovada;
+	
+	
+	
+	public Transacao(double valor, double saldoDisponivel, double limiteTransacional, LocalTime horaTransacao,
+			MetodoPagamento tipo) {
+		super();
+		this.valor = valor;
+		this.saldoDisponivel = saldoDisponivel;
+		this.limiteTransacional = limiteTransacional;
+		this.horaTransacao = horaTransacao;
+		this.tipo = tipo;
+	}
+	
+	public Transacao() {
+		
+	}
 	
 	//Getters e Setters
 	
@@ -56,11 +73,25 @@ public class Transacao {
 	public void setHorarioLimiteFim(LocalTime horarioLimiteFim) {
 		this.horarioLimiteFim = horarioLimiteFim;
 	}
+	public boolean isAprovada() {
+		return aprovada;
+	}
+	public void setAprovada(boolean aprovada) {
+		this.aprovada = aprovada;
+	}
+	public String aprovadaString() {
+		if (aprovada) {
+			return "Aprovada";
+		} else {
+			return "Não aprovada";
+		}
+	}
+
 	@Override
 	public String toString() {
-		return "Transacao:\n Valor: " + valor + ",\n Saldo disponivel: " + saldoDisponivel + ",\n Limite Transacional: "
+		return "Transacao:\n Valor: R$ " + valor + ",\n Saldo disponivel: R$ " + saldoDisponivel + ",\n Limite Transacional: R$ "
 				+ limiteTransacional + ",\n Hora Transacao: " + horaTransacao + ",\n Horario Limite Incio: " + HorarioLimiteIncio
-				+ ",\n Horario Limite Fim: " + horarioLimiteFim + ",\n Método de Pagamento: " + tipo + "\n";
+				+ ",\n Horario Limite Fim: " + horarioLimiteFim + ",\n Método de Pagamento: " + tipo + ",\n Status: "+aprovadaString()+"\n";
 	}
 	
 	

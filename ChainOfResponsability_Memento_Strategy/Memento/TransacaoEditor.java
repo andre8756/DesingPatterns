@@ -28,13 +28,13 @@ public class TransacaoEditor {
 			this.transacao = transacao;
 		}
 		
-		private Transacao getState() {
+		public Transacao getState() {
 			return transacao;
 		}
 
 		@Override
 		public String toString() {
-			return "Memento [transacao=" + transacao + "]";
+			return "" + transacao + "\n";
 		}
 		
 	}

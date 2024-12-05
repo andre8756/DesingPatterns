@@ -1,5 +1,5 @@
 package Strategy;
-//DISTRIBUIÇÃO DO ALGORÍTIMO
+
 public class CartaoCredito implements MetodoPagamento{
 
 	@Override
