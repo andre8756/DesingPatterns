@@ -118,7 +118,7 @@ public class Main {
 		}while (opcao != 4);
 		
 		
-		
+		scanner.close();
 		
 	}		
 }
